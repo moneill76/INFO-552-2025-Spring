@@ -399,6 +399,173 @@
             }
         }
 
+        /* Form Styles */
+        .membership-form-container {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .membership-form {
+            padding: 2rem;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .form-section-title {
+            color: var(--navy-blue);
+            font-family: 'Trajan Pro', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--brass-gold);
+            display: inline-block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--slate-gray);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.3s ease;
+            background-color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--navy-blue);
+            box-shadow: 0 0 0 3px rgba(28, 45, 90, 0.1);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-label {
+            display: flex !important;
+            align-items: center;
+            font-weight: 400 !important;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .checkbox-label:hover {
+            background-color: var(--light-gray);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto !important;
+            margin-right: 0.8rem;
+            margin-bottom: 0;
+            transform: scale(1.2);
+            accent-color: var(--navy-blue);
+        }
+
+        .checkbox-label.agreement {
+            grid-column: 1 / -1;
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--brass-gold);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .form-submit {
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        .btn-submit {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--slate-gray);
+            transform: translateY(-2px);
+        }
+
+        .form-note {
+            color: var(--slate-gray);
+            font-size: 0.9rem;
+            font-style: italic;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Form Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .membership-form {
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .form-section-title {
+                font-size: 1.1rem;
+            }
+
+            .btn-submit {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
         /* Large text preferences */
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -566,12 +733,214 @@
         <section id="join" class="section">
             <div class="container">
                 <h2>Join Our Brotherhood</h2>
-                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">Are you a Christian man aged 50+ in South Central Pennsylvania? Join our fellowship of veterans, first responders, craftsmen, and community leaders.</p>
-                    <div style="background-color: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                        <h3 style="color: var(--navy-blue); margin-bottom: 1rem;">Ready to Join?</h3>
-                        <p style="margin-bottom: 1.5rem;">Contact us to learn more about membership and how you can be part of our community.</p>
-                        <a href="#contact" class="btn">Get Started</a>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem; text-align: center;">Are you a Christian man aged 50+ in South Central Pennsylvania? Join our fellowship of veterans, first responders, craftsmen, and community leaders.</p>
+                    
+                    <div class="membership-form-container">
+                        <form id="membershipForm" class="membership-form">
+                            <h3 style="color: var(--navy-blue); margin-bottom: 2rem; text-align: center;">Membership Application</h3>
+                            
+                            <!-- Personal Information -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">Personal Information</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="age">Age *</label>
+                                        <input type="number" id="age" name="age" min="50" max="100" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <textarea id="address" name="address" rows="3" placeholder="Street Address, City, State, ZIP"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="county">County *</label>
+                                    <select id="county" name="county" required>
+                                        <option value="">Select your county</option>
+                                        <option value="lancaster">Lancaster County</option>
+                                        <option value="york">York County</option>
+                                        <option value="berks">Berks County (Reading area)</option>
+                                        <option value="dauphin">Dauphin County (Harrisburg area)</option>
+                                        <option value="cumberland">Cumberland County (Carlisle area)</option>
+                                        <option value="other">Other South Central PA</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Background Information -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">Background & Experience</h4>
+                                
+                                <div class="form-group">
+                                    <label>Service Background (Check all that apply)</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="military">
+                                            Military Veteran
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="police">
+                                            Police Officer (retired/active)
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="firefighter">
+                                            Firefighter/EMT
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="craftsman">
+                                            Craftsman/Tradesman
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="community">
+                                            Community Leader
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="clergy">
+                                            Pastor/Deacon
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="scout">
+                                            Scout Leader
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="background" value="coach">
+                                            Volunteer Coach
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="profession">Current/Former Profession</label>
+                                    <input type="text" id="profession" name="profession" placeholder="e.g., Retired carpenter, Police sergeant, etc.">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="church">Home Church (if applicable)</label>
+                                    <input type="text" id="church" name="church" placeholder="Church name and denomination">
+                                </div>
+                            </div>
+
+                            <!-- Faith & Community -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">Faith & Community Involvement</h4>
+                                
+                                <div class="form-group">
+                                    <label for="faith">Please briefly describe your Christian faith journey</label>
+                                    <textarea id="faith" name="faith" rows="4" placeholder="Share about your relationship with Christ and how long you've been a believer..."></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Which programs interest you most? (Check all that apply)</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="programs" value="fireside">
+                                            Fireside Forums (Storytelling)
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="programs" value="table">
+                                            Table Circle (Community Meals)
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="programs" value="ledger">
+                                            The Iron Ledger (Writing/Publishing)
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="programs" value="mentorship">
+                                            Sons of the Circle (Mentorship)
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="programs" value="fieldwatch">
+                                            Field Watch (Visiting/Care)
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="skills">Skills or resources you'd like to share with the community</label>
+                                    <textarea id="skills" name="skills" rows="3" placeholder="e.g., woodworking, counseling, mechanical repair, teaching, cooking, etc."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Contact Preferences -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">Communication Preferences</h4>
+                                
+                                <div class="form-group">
+                                    <label>How would you prefer to receive updates?</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="communication" value="email">
+                                            Email updates
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="communication" value="phone">
+                                            Phone calls
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="communication" value="mail">
+                                            Postal mail
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="referral">How did you hear about Sentinel Circle?</label>
+                                    <select id="referral" name="referral">
+                                        <option value="">Select an option</option>
+                                        <option value="friend">Friend/Family member</option>
+                                        <option value="church">Church</option>
+                                        <option value="vfw">VFW/American Legion</option>
+                                        <option value="online">Online search</option>
+                                        <option value="flyer">Flyer/Poster</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Additional Information -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">Additional Information</h4>
+                                
+                                <div class="form-group">
+                                    <label for="questions">Questions or additional information you'd like to share</label>
+                                    <textarea id="questions" name="questions" rows="4" placeholder="Any questions about our programs, special needs we should be aware of, or anything else you'd like us to know..."></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="checkbox-label agreement">
+                                        <input type="checkbox" name="agreement" required>
+                                        I affirm that I am a Christian man aged 50 or older, and I agree to uphold the values of Sentinel Circle: faith in Jesus Christ, service to others, brotherhood, and maintaining our watch in the community. *
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-submit">Submit Application</button>
+                                <p class="form-note">* Required fields. We'll contact you within 2-3 business days to welcome you to our brotherhood.</p>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
