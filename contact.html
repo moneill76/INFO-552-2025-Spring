@@ -3,179 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel Circle - Contact</title>
+    <title>Contact - Sentinel Circle</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
         header {
-            background-color: #2c3e50;
+            background-color: #34495e;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         nav {
-            background-color: #34495e;
-            padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
         
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
         
-        nav li {
-            display: inline;
-            margin-right: 20px;
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
         
-        nav a {
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
         }
         
-        nav a:hover {
-            text-decoration: underline;
+        .nav-links a:hover {
+            color: #3498db;
         }
         
-        main {
-            background-color: white;
-            padding: 30px;
-            margin: 20px 0;
-        }
-        
-        h1 {
-            color: #2c3e50;
-        }
-        
-        h2 {
+        .mobile-menu {
+            display: none;
+            background: white;
             color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-        }
-        
-        .motto {
-            font-style: italic;
-            font-size: 18px;
-            color: #7f8c8d;
-            margin-bottom: 20px;
-        }
-        
-        .contact-form {
-            max-width: 500px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #bdc3c7;
-            font-family: Arial, sans-serif;
-        }
-        
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        
-        button {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
             border: none;
+            font-size: 1.5rem;
             cursor: pointer;
         }
         
-        button:hover {
-            background-color: #2980b9;
+        main {
+            margin-top: 80px;
         }
         
-        footer {
-            background-color: #2c3e50;
+        .hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ecf0f1"/><circle cx="50" cy="50" r="20" fill="%2334495e" opacity="0.1"/></svg>');
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin: 2rem auto 3rem auto;
+            max-width: 1200px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background: white;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            margin: 1rem auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .contact-info h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #3498db;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-details h4 {
+            color: #34495e;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #7f8c8d;
+            margin: 0;
+        }
+
+        .contact-details a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .contact-form h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #34495e;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .meeting-info {
+            background: #e8f4fd;
+            border: 1px solid #3498db;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .meeting-info h3 {
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .meeting-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .meeting-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .meeting-card h4 {
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .meeting-card p {
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .directions {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .directions h3 {
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .directions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .direction-item {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .direction-item h4 {
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #34495e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .meeting-details {
+                grid-template-columns: 1fr;
+            }
+
+            .directions-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Sentinel Circle</h1>
-        <p class="motto">Still Standing Watch</p>
+        <nav>
+            <div class="logo">⛨ Sentinel Circle</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community Partners</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </nav>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    
+
     <main>
-        <h2>Join Our Brotherhood</h2>
-        <p>Are you a Christian man aged 50+ in South Central Pennsylvania? Join our fellowship of veterans, first responders, craftsmen, and community leaders.</p>
-        
-        <h2>Contact Us</h2>
-        <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+        <section class="hero">
+            <h1>Contact Sentinel Circle</h1>
+            <p>Connect with our brotherhood and take the first step toward meaningful fellowship</p>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p><a href="mailto:info@sentinelcircle.org">info@sentinelcircle.org</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p><a href="tel:717-555-0123">(717) 555-0123</a></p>
+                                <p>Leave a message and we'll get back to you</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4>Mailing Address</h4>
+                                <p>Sentinel Circle<br>
+                                P.O. Box 1234<br>
+                                Lancaster, PA 17601</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">⏰</div>
+                            <div class="contact-details">
+                                <h4>Response Time</h4>
+                                <p>We respond to inquiries within 24-48 hours</p>
+                                <p>Monday - Friday, 9 AM - 5 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Send Us A Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Age Range</label>
+                                <select id="age" name="age">
+                                    <option value="">Select Age Range</option>
+                                    <option value="50-59">50-59</option>
+                                    <option value="60-69">60-69</option>
+                                    <option value="70-79">70-79</option>
+                                    <option value="80+">80+</option>
+                                    <option value="under-50">Under 50 (Interested in Future Membership)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="background">Background (Optional)</label>
+                                <select id="background" name="background">
+                                    <option value="">Select Background</option>
+                                    <option value="veteran">Military Veteran</option>
+                                    <option value="first-responder">First Responder</option>
+                                    <option value="craftsman">Craftsman/Tradesman</option>
+                                    <option value="business">Business Leader</option>
+                                    <option value="ministry">Ministry/Church Leader</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="county">County</label>
+                                <select id="county" name="county">
+                                    <option value="">Select County</option>
+                                    <option value="lancaster">Lancaster</option>
+                                    <option value="york">York</option>
+                                    <option value="cumberland">Cumberland</option>
+                                    <option value="dauphin">Dauphin</option>
+                                    <option value="berks">Berks</option>
+                                    <option value="lebanon">Lebanon</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" placeholder="Tell us about yourself, your interest in Sentinel Circle, or any questions you have..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+            </div>
+        </section>
+
+        <section class="meeting-info">
+            <div class="container">
+                <h3>Meeting Information</h3>
+                <div class="meeting-details">
+                    <div class="meeting-card">
+                        <h4>Regular Meetings</h4>
+                        <p>Second Saturday of each month</p>
+                        <p>9:00 AM - 11:00 AM</p>
+                        <p>Fellowship Hall</p>
+                    </div>
+
+                    <div class="meeting-card">
+                        <h4>Service Projects</h4>
+                        <p>Third Saturday of each month</p>
+                        <p>8:00 AM - 3:00 PM</p>
+                        <p>Various locations</p>
+                    </div>
+
+                    <div class="meeting-card">
+                        <h4>Bible Study</h4>
+                        <p>Every Wednesday</p>
+                        <p>7:00 PM - 8:30 PM</p>
+                        <p>Community Center</p>
+                    </div>
+
+                    <div class="meeting-card">
+                        <h4>Coffee & Fellowship</h4>
+                        <p>First Friday of each month</p>
+                        <p>8:00 AM - 10:00 AM</p>
+                        <p>Local Diner</p>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="background">Background (Veteran, First Responder, etc.):</label>
-                    <input type="text" id="background" name="background">
+            </div>
+        </section>
+
+        <section class="directions">
+            <div class="container">
+                <h3>How to Find Us</h3>
+                <div class="directions-grid">
+                    <div class="direction-item">
+                        <h4>Main Meeting Location</h4>
+                        <p><strong>Grace Community Church</strong><br>
+                        123 Faith Street<br>
+                        Lancaster, PA 17602</p>
+                        <p>Enter through the side entrance marked "Fellowship Hall." Parking is available in the rear lot.</p>
+                    </div>
+
+                    <div class="direction-item">
+                        <h4>Bible Study Location</h4>
+                        <p><strong>Lancaster Community Center</strong><br>
+                        456 Community Drive<br>
+                        Lancaster, PA 17603</p>
+                        <p>Room 204 (upstairs). Use the main entrance and follow signs to meeting rooms.</p>
+                    </div>
+
+                    <div class="direction-item">
+                        <h4>First-Time Visitors</h4>
+                        <p>New to Sentinel Circle? We'd love to meet you!</p>
+                        <p>Arrive 15 minutes early for introductions. Look for members wearing Sentinel Circle name tags who will be happy to welcome you.</p>
+                    </div>
+
+                    <div class="direction-item">
+                        <h4>What to Expect</h4>
+                        <p>Casual dress is welcome. Bring your Bible for Wednesday studies. Coffee and light refreshments are provided at all meetings.</p>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" placeholder="Tell us about yourself and your interest in joining Sentinel Circle..."></textarea>
-                </div>
-                
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-        
-        <h2>Service Area</h2>
-        <p>We serve Christian men throughout South Central Pennsylvania, including:</p>
-        <ul>
-            <li>Harrisburg area</li>
-            <li>Carlisle</li>
-            <li>York</li>
-            <li>Lancaster</li>
-            <li>And surrounding communities</li>
-        </ul>
+            </div>
+        </section>
     </main>
-    
+
     <footer>
-        <p>&copy; 2025 Sentinel Circle. All rights reserved.</p>
+        <p>&copy; 2025 Sentinel Circle. Serving Christian men 50+ in South Central Pennsylvania.</p>
+        <p>Faith • Service • Tradition • Strength</p>
     </footer>
+
+    <script>
+        // Simple mobile menu toggle (basic JavaScript for intro class level)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = '#34495e';
+                navLinks.style.padding = '1rem';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form submission handler (for intro class - basic alert)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you within 24-48 hours.');
+        });
+    </script>
 </body>
 </html>
