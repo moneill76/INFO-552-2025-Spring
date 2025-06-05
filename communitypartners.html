@@ -10,23 +10,33 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #2c3e50;
+            color: #333;
             background-color: #f8f9fa;
         }
-        
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         header {
             background-color: #34495e;
             color: white;
             padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         nav {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -54,145 +64,286 @@
             transition: color 0.3s;
         }
         
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: #3498db;
         }
-        
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .page-header h1 {
+
+        .mobile-menu {
+            display: none;
+            background: white;
             color: #34495e;
-            font-size: 2.5rem;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ecf0f1"/><circle cx="50" cy="50" r="20" fill="%2334495e" opacity="0.1"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin: 2rem auto 3rem auto;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
-        
-        .intro-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-            text-align: center;
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
         }
-        
-        .partners-section {
-            margin-bottom: 3rem;
-        }
-        
-        .section-title {
-            color: #34495e;
-            font-size: 2rem;
+
+        .motto {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #f39c12;
             margin-bottom: 2rem;
-            text-align: center;
         }
-        
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            margin: 1rem auto;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
         .partners-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-top: 2rem;
         }
-        
+
         .partner-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            overflow: hidden;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
             transition: transform 0.3s;
         }
-        
+
         .partner-card:hover {
             transform: translateY(-5px);
         }
-        
-        .partner-header {
-            background: #34495e;
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .partner-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        
-        .partner-type {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .partner-body {
-            padding: 1.5rem;
-        }
-        
-        .partner-description {
+
+        .partner-card h4 {
+            color: #2c3e50;
             margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
-        
-        .partnership-details {
-            background: #ecf0f1;
+
+        .partner-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .partner-card .partnership-details {
+            background: white;
             padding: 1rem;
             border-radius: 5px;
-            margin-bottom: 1rem;
+            margin-top: 1rem;
+            border-left: 3px solid #3498db;
         }
-        
-        .partnership-details h4 {
+
+        .partnership-details strong {
             color: #34495e;
-            margin-bottom: 0.5rem;
         }
-        
-        .visit-btn {
+
+        .category-header {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 3rem 0 2rem 0;
+        }
+
+        .category-header h3 {
+            font-size: 1.8rem;
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
             display: inline-block;
             background: #3498db;
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            transition: all 0.3s;
         }
-        
-        .visit-btn:hover {
+
+        .btn:hover {
             background: #2980b9;
+            transform: translateY(-2px);
         }
-        
-        .veterans {
-            border-left: 4px solid #e74c3c;
+
+        .btn-secondary {
+            background: #95a5a6;
         }
-        
-        .faith {
-            border-left: 4px solid #9b59b6;
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
         }
-        
-        .community {
-            border-left: 4px solid #f39c12;
+
+        .testimonial {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-style: italic;
+            margin: 2rem 0;
         }
-        
-        .service {
-            border-left: 4px solid #27ae60;
+
+        .testimonial p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
         }
-        
-        footer {
-            background-color: #34495e;
+
+        .testimonial .author {
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: #3498db;
             color: white;
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
+            border-radius: 8px;
         }
-        
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .motto {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .section h3 {
+                font-size: 1.3rem;
+            }
+
             .partners-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -204,172 +355,215 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="activities.html">Activities</a></li>
-                <li><a href="events.html">Events</a></li>
+                <li><a href="programs.html">Programs</a></li>
                 <li><a href="resources.html">Resources</a></li>
-                <li><a href="community.html" style="color: #3498db;">Community Partners</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="community.html" class="active">Community Partners</a></li>
+                <li><a href="join.html">Join</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="mobile-menu">☰</button>
         </nav>
     </header>
 
     <main>
-        <div class="page-header">
+        <section class="hero">
             <h1>Community Partners</h1>
-            <p>Working together to strengthen South Central Pennsylvania</p>
+            <p class="motto">Still Standing Watch</p>
+            <p>Building stronger communities through strategic partnerships with faith-based organizations, veteran services, and local nonprofits throughout South Central Pennsylvania.</p>
+        </section>
+
+        <section class="section">
+            <h2>Partnership Philosophy</h2>
+            <p>Sentinel Circle believes in the power of collaboration to strengthen our communities and extend our impact. We partner with like-minded organizations that share our commitment to Christian values, service excellence, and community betterment.</p>
+            <p>Our partnerships are built on mutual respect, shared purpose, and the understanding that together we can accomplish more than any single organization working alone. Each partnership reflects our dedication to being good stewards of the resources and opportunities God has provided.</p>
+        </section>
+
+        <div class="impact-stats">
+            <div class="stat-card">
+                <span class="stat-number">25+</span>
+                <div class="stat-label">Active Partnerships</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">500+</span>
+                <div class="stat-label">Families Served Annually</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">12</span>
+                <div class="stat-label">Counties Reached</div>
+            </div>
         </div>
 
-        <div class="intro-section">
-            <h2>Partnerships in Service</h2>
-            <p>Sentinel Circle believes in the power of collaboration. We partner with local organizations that share our commitment to serving others, strengthening families, and building community. Through these partnerships, we multiply our impact and create lasting change in South Central Pennsylvania.</p>
+        <div class="category-header">
+            <h3>⛪ Faith-Based Partners</h3>
         </div>
 
-        <section class="partners-section">
-            <h2 class="section-title">Veterans & Military Organizations</h2>
-            <div class="partners-grid">
-                <div class="partner-card veterans">
-                    <div class="partner-header">
-                        <div class="partner-name">Veterans Outreach of PA</div>
-                        <div class="partner-type">Homeless Veterans Support</div>
-                    </div>
-                    <div class="partner-body">
-                        <div class="partner-description">
-                            Provides transitional housing, case management, and support services for homeless veterans in the greater Harrisburg area.
-                        </div>
-                        <div class="partnership-details">
-                            <h4>Our Partnership:</h4>
-                            <p>Monthly volunteer days, donations drives, and mentorship programs for veterans transitioning back to civilian life.</p>
-                        </div>
-                        <a href="https://www.veteransoutreachofpa.org/" target="_blank" class="visit-btn">Visit Website</a>
-                    </div>
-                </div>
-
-                <div class="partner-card veterans">
-                    <div class="partner-header">
-                        <div class="partner-name">PA Department of Military & Veterans Affairs</div>
-                        <div class="partner-type">State Veterans Services</div>
-                    </div>
-                    <div class="partner-body">
-                        <div class="partner-description">
-                            Official state agency providing benefits assistance, healthcare, and support services to Pennsylvania's veterans.
-                        </div>
-                        <div class="partnership-details">
-                            <h4>Our Partnership:</h4>
-                            <p>Support veterans events, cemetery maintenance, and benefits awareness programs throughout the region.</p>
-                        </div>
-                        <a href="https://www.pa.gov/agencies/dmva/" target="_blank" class="visit-btn">Visit Website</a>
-                    </div>
+        <div class="partners-grid">
+            <div class="partner-card">
+                <h4>Local Church Network</h4>
+                <p>Collaborative relationships with over 15 churches across multiple denominations, providing venues for meetings, joint service projects, and shared ministry opportunities.</p>
+                <div class="partnership-details">
+                    <p><strong>Denominations:</strong> Baptist, Presbyterian, Methodist, Non-denominational</p>
+                    <p><strong>Joint Activities:</strong> Men's retreats, service projects, disaster relief</p>
+                    <p><strong>Meeting Venues:</strong> Rotating fellowship halls and community rooms</p>
                 </div>
             </div>
-        </section>
 
-        <section class="partners-section">
-            <h2 class="section-title">Faith-Based Organizations</h2>
-            <div class="partners-grid">
-                <div class="partner-card faith">
-                    <div class="partner-header">
-                        <div class="partner-name">Lancaster County Christian Ministries</div>
-                        <div class="partner-type">Community Outreach</div>
-                    </div>
-                    <div class="partner-body">
-                        <div class="partner-description">
-                            Network of churches and ministries serving those experiencing homelessness, hunger, and other challenges in Lancaster County.
-                        </div>
-                        <div class="partnership-details">
-                            <h4>Our Partnership:</h4>
-                            <p>Regular volunteers at soup kitchens, food pantries, and seasonal assistance programs.</p>
-                        </div>
-                        <a href="https://lancasterpa.com/ministries/" target="_blank" class="visit-btn">Visit Website</a>
-                    </div>
-                </div>
-
-                <div class="partner-card faith">
-                    <div class="partner-header">
-                        <div class="partner-name">Water Street Mission</div>
-                        <div class="partner-type">Homeless Services</div>
-                    </div>
-                    <div class="partner-body">
-                        <div class="partner-description">
-                            Christ-centered ministry serving homeless and hurting individuals and families in Lancaster and surrounding areas.
-                        </div>
-                        <div class="partnership-details">
-                            <h4>Our Partnership:</h4>
-                            <p>Meal service volunteers, mentoring programs, and support for life skills training initiatives.</p>
-                        </div>
-                        <a href="https://www.waterstreetmission.org/" target="_blank" class="visit-btn">Visit Website</a>
-                    </div>
+            <div class="partner-card">
+                <h4>Christian Service Organizations</h4>
+                <p>Strategic partnerships with established Christian nonprofits that amplify our outreach capabilities and provide specialized expertise in community service.</p>
+                <div class="partnership-details">
+                    <p><strong>Focus Areas:</strong> Food security, housing assistance, youth mentorship</p>
+                    <p><strong>Collaboration:</strong> Joint fundraising, volunteer coordination</p>
+                    <p><strong>Resource Sharing:</strong> Equipment, facilities, expertise</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="partners-section">
-            <h2 class="section-title">Community Service Organizations</h2>
-            <div class="partners-grid">
-                <div class="partner-card service">
-                    <div class="partner-header">
-                        <div class="partner-name">Habitat for Humanity Lancaster</div>
-                        <div class="partner-type">Housing Ministry</div>
-                    </div>
-                    <div class="partner-body">
-                        <div class="partner-description">
-                            Building affordable homes in partnership with families in need throughout Lancaster County.
-                        </div>
-                        <div class="partnership-details">
-                            <h4>Our Partnership:</h4>
-                            <p>Monthly build days, skilled trade volunteers, and support for home dedication ceremonies.</p>
-                        </div>
-                        <a href="https://habitatlancaster.org/" target="_blank" class="visit-btn">Visit Website</a>
-                    </div>
-                </div>
+        <div class="category-header">
+            <h3>🇺🇸 Veterans Services</h3>
+        </div>
 
-                <div class="partner-card community">
-                    <div class="partner-header">
-                        <div class="partner-name">Lancaster County Community Foundation</div>
-                        <div class="partner-type">Philanthropic Leadership</div>
-                    </div>
-                    <div class="partner-body">
-                        <div class="partner-description">
-                            Connecting generous people with great causes to build stronger communities throughout Lancaster County.
-                        </div>
-                        <div class="partnership-details">
-                            <h4>Our Partnership:</h4>
-                            <p>Participate in community giving initiatives and volunteer matching programs.</p>
-                        </div>
-                        <a href="https://www.lancfound.org/" target="_blank" class="visit-btn">Visit Website</a>
-                    </div>
-                </div>
-
-                <div class="partner-card community">
-                    <div class="partner-header">
-                        <div class="partner-name">York County Fair</div>
-                        <div class="partner-type">Community Tradition</div>
-                    </div>
-                    <div class="partner-body">
-                        <div class="partner-description">
-                            One of Pennsylvania's premier agricultural fairs, celebrating rural heritage and community spirit for over 260 years.
-                        </div>
-                        <div class="partnership-details">
-                            <h4>Our Partnership:</h4>
-                            <p>Annual volunteer support during fair week, helping with setup, information booths, and community outreach.</p>
-                        </div>
-                        <a href="https://www.yorkfair.org/" target="_blank" class="visit-btn">Visit Website</a>
-                    </div>
+        <div class="partners-grid">
+            <div class="partner-card">
+                <h4>Veterans Outreach of PA</h4>
+                <p>Official partnership providing comprehensive support services for veterans and their families, including benefits navigation, counseling referrals, and crisis intervention.</p>
+                <div class="partnership-details">
+                    <p><strong>Services:</strong> Benefits assistance, peer support, family counseling</p>
+                    <p><strong>Coverage:</strong> All of South Central Pennsylvania</p>
+                    <p><strong>Referral Network:</strong> VA Medical Centers, local providers</p>
                 </div>
             </div>
-        </section>
 
-        <section class="partners-section">
-            <div class="intro-section">
-                <h2>Become a Partner</h2>
-                <p>Is your organization interested in partnering with Sentinel Circle? We're always looking for meaningful ways to serve our community. Contact us to explore partnership opportunities that align with our mission of faith, service, tradition, and strength.</p>
-                <a href="contact.html" class="visit-btn" style="margin-top: 1rem; display: inline-block;">Contact Us</a>
+            <div class="partner-card">
+                <h4>American Legion & VFW Posts</h4>
+                <p>Collaborative relationships with multiple local posts, sharing resources for veteran events, memorial services, and community support initiatives.</p>
+                <div class="partnership-details">
+                    <p><strong>Joint Events:</strong> Memorial Day services, veteran recognition</p>
+                    <p><strong>Shared Resources:</strong> Meeting spaces, event coordination</p>
+                    <p><strong>Community Service:</strong> Flag ceremonies, honor guards</p>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <h4>Operation First Response</h4>
+                <p>Partnership focused on supporting wounded veterans and their families through financial assistance, home modifications, and adaptive equipment provision.</p>
+                <div class="partnership-details">
+                    <p><strong>Support Types:</strong> Financial assistance, home modifications</p>
+                    <p><strong>Target Population:</strong> Wounded and disabled veterans</p>
+                    <p><strong>Service Delivery:</strong> Direct financial aid, equipment loans</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <p>"Our partnership with Sentinel Circle has transformed our ability to serve veterans in Lancaster County. Their skilled craftsmen have completed over 30 home accessibility projects this year alone."</p>
+            <p class="author">— Sarah Martinez, Director, Veterans Outreach of PA</p>
+        </div>
+
+        <div class="category-header">
+            <h3>🏘️ Community Organizations</h3>
+        </div>
+
+        <div class="partners-grid">
+            <div class="partner-card">
+                <h4>Habitat for Humanity</h4>
+                <p>Regular volunteer partnership providing skilled labor for home construction and renovation projects, with Sentinel Circle members contributing carpentry, plumbing, and electrical expertise.</p>
+                <div class="partnership-details">
+                    <p><strong>Volunteer Commitment:</strong> Monthly build days</p>
+                    <p><strong>Skills Provided:</strong> Construction, electrical, plumbing</p>
+                    <p><strong>Impact:</strong> 8-12 homes annually</p>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <h4>Local Food Banks</h4>
+                <p>Ongoing support for regional food banks through monthly food drives, volunteer sorting shifts, and transportation assistance using member-owned vehicles and trailers.</p>
+                <div class="partnership-details">
+                    <p><strong>Frequency:</strong> Monthly food drives and volunteer shifts</p>
+                    <p><strong>Services:</strong> Collection, sorting, transportation</p>
+                    <p><strong>Coverage:</strong> Lancaster, York, Chester, Berks Counties</p>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <h4>Senior Centers</h4>
+                <p>Partnerships with multiple senior centers providing maintenance services, technology training, and social programming for elderly residents in our communities.</p>
+                <div class="partnership-details">
+                    <p><strong>Services:</strong> Maintenance, technology training, social programs</p>
+                    <p><strong>Frequency:</strong> Weekly volunteer commitments</p>
+                    <p><strong>Beneficiaries:</strong> 200+ seniors monthly</p>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <h4>Crisis Pregnancy Centers</h4>
+                <p>Supporting pro-life organizations through facility maintenance, security services, and practical assistance for expectant mothers and young families.</p>
+                <div class="partnership-details">
+                    <p><strong>Support Types:</strong> Facility maintenance, volunteer services</p>
+                    <p><strong>Family Assistance:</strong> Furniture assembly, transportation</p>
+                    <p><strong>Advocacy:</strong> Community awareness, fundraising support</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-header">
+            <h3>📚 Educational Institutions</h3>
+        </div>
+
+        <div class="partners-grid">
+            <div class="partner-card">
+                <h4>Trade Schools & Community Colleges</h4>
+                <p>Mentorship partnerships connecting experienced tradesmen with students pursuing technical careers, offering real-world experience and career guidance.</p>
+                <div class="partnership-details">
+                    <p><strong>Programs:</strong> Mentorship, guest speaking, job placement</p>
+                    <p><strong>Trades:</strong> Construction, automotive, manufacturing</p>
+                    <p><strong>Student Support:</strong> Career guidance, networking opportunities</p>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <h4>Youth Organizations</h4>
+                <p>Partnerships with Boy Scouts, youth groups, and Christian camps providing leadership training, outdoor skills instruction, and positive male role models.</p>
+                <div class="partnership-details">
+                    <p><strong>Activities:</strong> Merit badge instruction, camp counseling</p>
+                    <p><strong>Skills Taught:</strong> Outdoor skills, leadership, citizenship</p>
+                    <p><strong>Mentorship:</strong> One-on-one guidance and support</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2>Partnership Opportunities</h2>
+            <h3>Becoming a Partner</h3>
+            <p>Organizations interested in partnering with Sentinel Circle are invited to contact our Community Partnership Coordinator. We seek partners who share our Christian values, commitment to service excellence, and dedication to strengthening communities throughout South Central Pennsylvania.</p>
+            
+            <h3>What We Offer Partners</h3>
+            <p>Sentinel Circle brings decades of combined experience in construction, emergency services, military operations, and community leadership. Our members are reliable, skilled volunteers who approach every partnership with professionalism and Christian integrity. We provide consistent volunteer support, specialized expertise, and a network of connections throughout the region.</p>
+            
+            <h3>Partnership Benefits</h3>
+            <p>Our collaborative approach has enabled partner organizations to expand their reach, improve service delivery, and achieve greater community impact. Together, we've served over 500 families annually, completed hundreds of service projects, and strengthened the faith community throughout our region.</p>
+
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn">Partner With Us</a>
+                <a href="programs.html" class="btn btn-secondary">View Our Programs</a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Sentinel Circle. Serving Christian men 50+ in South Central Pennsylvania.</p>
-        <p>Faith • Service • Tradition • Strength</p>
+        <div class="container">
+            <p>&copy; 2024 Sentinel Circle. A fellowship of Christian men committed to service, tradition, and strength.</p>
+            <p><em>"Still Standing Watch"</em></p>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
 </body>
 </html>
