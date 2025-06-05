@@ -3,110 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel Circle - Home</title>
+    <title>Sentinel Circle - Christian Men's Fellowship</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
         }
         
         header {
-            background-color: #2c3e50;
+            background-color: #34495e;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         nav {
-            background-color: #34495e;
-            padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
         
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
         
-        nav li {
-            display: inline;
-            margin-right: 20px;
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
         
-        nav a {
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
         }
         
-        nav a:hover {
-            text-decoration: underline;
+        .nav-links a:hover {
+            color: #3498db;
         }
         
         main {
-            background-color: white;
-            padding: 30px;
-            margin: 20px 0;
+            margin-top: 80px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem;
         }
         
-        h1 {
-            color: #2c3e50;
+        .hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ecf0f1"/><circle cx="50" cy="50" r="20" fill="%2334495e" opacity="0.1"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
         }
         
-        h2 {
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
             color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
+            margin-bottom: 1rem;
         }
         
-        .motto {
-            font-style: italic;
-            font-size: 18px;
+        .card p {
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .community-links {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .community-links h2 {
+            color: #34495e;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .link-item {
+            padding: 1rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .link-item:hover {
+            background-color: #ecf0f1;
+        }
+        
+        .link-item a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .link-item p {
+            font-size: 0.9rem;
             color: #7f8c8d;
-            margin-bottom: 20px;
+            margin-top: 0.5rem;
         }
         
         footer {
-            background-color: #2c3e50;
+            background-color: #34495e;
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: white;
+            color: #34495e;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Sentinel Circle</h1>
-        <p class="motto">Still Standing Watch</p>
+        <nav>
+            <div class="logo">⛨ Sentinel Circle</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community Partners</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </nav>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    
+
     <main>
-        <h2>Welcome</h2>
-        <p>A fellowship of Christian men rooted in service, tradition, and strength. For veterans, first responders, craftsmen, and community leaders aged 50+ in South Central Pennsylvania.</p>
-        
-        <h2>Who We Are</h2>
-        <p>Sentinel Circle serves Christian men aged 50 and older in South Central Pennsylvania. We are retired veterans, first responders, craftsmen, and community leaders united by our faith and commitment to service.</p>
-        
-        <h2>Our Purpose</h2>
-        <p>We create a trusted space where Christian men can continue to find purpose, connection, and opportunities to mentor the next generation. Rooted in Trinitarian Christian faith, we embody service, tradition, biblical principles, and strength.</p>
-        
-        <h2>Join Us</h2>
-        <p>Are you a Christian man aged 50+ in South Central Pennsylvania? We invite you to join our brotherhood of veterans, first responders, craftsmen, and community leaders.</p>
+        <section class="hero">
+            <h1>Sentinel Circle</h1>
+            <p>A fellowship of Christian men rooted in service, tradition, and strength. For veterans, first responders, craftsmen, and community leaders aged 50+ in South Central Pennsylvania.</p>
+        </section>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>Who We Are</h2>
+                <p>Sentinel Circle serves Christian men aged 50 and older in South Central Pennsylvania. We are retired veterans, first responders, craftsmen, and community leaders united by our faith and commitment to service.</p>
+                <p>Our brotherhood spans Lancaster, York, Cumberland, Dauphin, and surrounding counties, bringing together men from diverse backgrounds with shared values.</p>
+                <a href="about.html" class="btn">Learn More</a>
+            </div>
+
+            <div class="card">
+                <h2>Our Purpose</h2>
+                <p>We create a trusted space where Christian men can continue to find purpose, connection, and opportunities to mentor the next generation. Rooted in Trinitarian Christian faith, we embody service, tradition, biblical principles, and strength.</p>
+                <p>Through fellowship, service projects, and mentorship programs, we strengthen our community and faith.</p>
+                <a href="activities.html" class="btn">Our Activities</a>
+            </div>
+
+            <div class="card">
+                <h2>Join Our Brotherhood</h2>
+                <p>Are you a Christian man aged 50+ in South Central Pennsylvania? We invite you to join our brotherhood of veterans, first responders, craftsmen, and community leaders.</p>
+                <p>Regular meetings, service opportunities, and fellowship await. No dues, just commitment to faith and community.</p>
+                <a href="contact.html" class="btn">Get Involved</a>
+            </div>
+        </div>
+
+        <section class="community-links">
+            <h2>Community Connections</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://www.veteransoutreachofpa.org/" target="_blank">Veterans Outreach of PA</a>
+                    <p>Supporting homeless veterans with housing and services in Harrisburg area</p>
+                </div>
+                
+                <div class="link-item">
+                    <a href="https://www.pa.gov/agencies/dmva/pennsylvania-veterans/events.html" target="_blank">PA Veterans Affairs Events</a>
+                    <p>Official state veterans events and resources</p>
+                </div>
+                
+                <div class="link-item">
+                    <a href="https://lancasterpa.com/ministries/" target="_blank">Lancaster County Ministries</a>
+                    <p>Local faith-based organizations serving those in need</p>
+                </div>
+                
+                <div class="link-item">
+                    <a href="https://www.lancfound.org/" target="_blank">Lancaster County Community Foundation</a>
+                    <p>Building stronger communities through philanthropy</p>
+                </div>
+            </div>
+        </section>
     </main>
-    
+
     <footer>
-        <p>&copy; 2025 Sentinel Circle. All rights reserved.</p>
+        <p>&copy; 2025 Sentinel Circle. Serving Christian men 50+ in South Central Pennsylvania.</p>
+        <p>Faith • Service • Tradition • Strength</p>
     </footer>
+
+    <script>
+        // Simple mobile menu toggle (basic JavaScript for intro class level)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = '#34495e';
+                navLinks.style.padding = '1rem';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
