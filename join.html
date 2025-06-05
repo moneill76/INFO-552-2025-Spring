@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Brotherhood - Sentinel Circle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #34495e;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #3498db;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: white;
+            color: #34495e;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ecf0f1"/><circle cx="50" cy="50" r="20" fill="%2334495e" opacity="0.1"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin: 2rem auto 3rem auto;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .motto {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #f39c12;
+            margin-bottom: 2rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .section {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            margin: 1rem auto;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-container {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-container h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .form-container h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            margin: 1rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .submit-btn {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            font-family: 'Georgia', serif;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .motto {
+                font-size: 1.2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+
+            .section h2, .form-container h2 {
+                font-size: 1.8rem;
+            }
+
+            .section h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">⛨ Sentinel Circle</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="community.html">Community Partners</a></li>
+                <li><a href="join.html" class="active">Join</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Join Our Brotherhood</h1>
+            <p class="motto">Still Standing Watch</p>
+            <p>Take the next step in your journey of faith, service, and fellowship with Christian men who share your values and commitment to community.</p>
+        </section>
+
+        <div class="main-content">
+            <div class="section">
+                <h2>Membership Requirements</h2>
+                <p>Sentinel Circle welcomes Christian men who are committed to service, tradition, and biblical principles. We seek men who want to continue making a difference in their communities and mentoring the next generation.</p>
+
+                <h3>Who We Welcome</h3>
+                <ul>
+                    <li>Christian men aged 50 and older</li>
+                    <li>Residents of South Central Pennsylvania (Lancaster, York, Cumberland, Dauphin, and surrounding counties)</li>
+                    <li>Veterans, first responders, craftsmen, and community leaders</li>
+                    <li>Men committed to Trinitarian Christian faith</li>
+                    <li>Those dedicated to service and mentorship</li>
+                </ul>
+
+                <h3>What We Offer</h3>
+                <ul>
+                    <li>Regular fellowship meetings</li>
+                    <li>Community service opportunities</li>
+                    <li>Mentorship programs</li>
+                    <li>Faith-based discussions and study</li>
+                    <li>Brotherhood and lasting friendships</li>
+                    <li>No membership dues required</li>
+                </ul>
+
+                <h3>Next Steps</h3>
+                <p>After submitting your application, a member of our leadership team will contact you within one week to discuss your interest and answer any questions. We believe in getting to know each potential member personally.</p>
+            </div>
+
+            <div class="form-container">
+                <h2>Membership Application</h2>
+                <form id="membershipForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age <span class="required">*</span></label>
+                            <input type="number" id="age" name="age" min="50" max="100" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="Street Address">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City <span class="required">*</span></label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="county">County <span class="required">*</span></label>
+                            <select id="county" name="county" required>
+                                <option value="">Select County</option>
+                                <option value="Lancaster">Lancaster</option>
+                                <option value="York">York</option>
+                                <option value="Cumberland">Cumberland</option>
+                                <option value="Dauphin">Dauphin</option>
+                                <option value="Adams">Adams</option>
+                                <option value="Lebanon">Lebanon</option>
+                                <option value="Perry">Perry</option>
+                                <option value="Other">Other South Central PA</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="church">Church or Faith Community</label>
+                        <input type="text" id="church" name="church" placeholder="Name of your church or faith community">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="background">Professional Background</label>
+                        <select id="background" name="background">
+                            <option value="">Select Primary Background</option>
+                            <option value="Veteran">Military Veteran</option>
+                            <option value="First Responder">First Responder (Police, Fire, EMS)</option>
+                            <option value="Craftsman">Craftsman/Tradesman</option>
+                            <option value="Business Leader">Business Leader</option>
+                            <option value="Community Leader">Community Leader</option>
+                            <option value="Education">Education</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Military/Service Experience</label>
+                        <textarea id="experience" name="experience" placeholder="Please share your military service, first responder experience, or other relevant background (optional)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">Areas of Interest</label>
+                        <textarea id="interests" name="interests" placeholder="What service opportunities, activities, or fellowship aspects interest you most?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referral">How did you hear about Sentinel Circle?</label>
+                        <select id="referral" name="referral">
+                            <option value="">Select One</option>
+                            <option value="Member">Current Member</option>
+                            <option value="Website">Website</option>
+                            <option value="Community Event">Community Event</option>
+                            <option value="Church">Church</option>
+                            <option value="Veterans Organization">Veterans Organization</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="commitment" name="commitment" required>
+                        <label for="commitment">I affirm my commitment to Christian faith and desire to serve my community through fellowship and mentorship. <span class="required">*</span></label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="contact" name="contact" required>
+                        <label for="contact">I agree to be contacted by Sentinel Circle leadership regarding my application. <span class="required">*</span></label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sentinel Circle. A fellowship of Christian men committed to service, tradition, and strength.</p>
+            <p><em>"Still Standing Watch"</em></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('membershipForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'age', 'city', 'county'];
+            const missingFields = requiredFields.filter(field => !data[field]);
+            
+            if (missingFields.length > 0) {
+                alert('Please fill in all required fields: ' + missingFields.join(', '));
+                return;
+            }
+            
+            if (parseInt(data.age) < 50) {
+                alert('Applicants must be 50 years of age or older.');
+                return;
+            }
+            
+            if (!data.commitment || !data.contact) {
+                alert('Please check all required agreement boxes.');
+                return;
+            }
+            
+            // Simulate successful submission
+            alert('Thank you for your application! A member of our leadership team will contact you within one week to discuss your interest in joining Sentinel Circle.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
