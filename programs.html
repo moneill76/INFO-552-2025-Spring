@@ -3,137 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel Circle - Programs</title>
+    <title>Programs - Sentinel Circle</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         header {
-            background-color: #2c3e50;
+            background-color: #34495e;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         nav {
-            background-color: #34495e;
-            padding: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
         }
         
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
         
-        nav li {
-            display: inline;
-            margin-right: 20px;
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
         
-        nav a {
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
         }
         
-        nav a:hover {
-            text-decoration: underline;
+        .nav-links a:hover, .nav-links a.active {
+            color: #3498db;
         }
-        
-        main {
-            background-color: white;
-            padding: 30px;
-            margin: 20px 0;
-        }
-        
-        h1 {
-            color: #2c3e50;
-        }
-        
-        h2 {
+
+        .mobile-menu {
+            display: none;
+            background: white;
             color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
-        
-        .motto {
-            font-style: italic;
-            font-size: 18px;
-            color: #7f8c8d;
-            margin-bottom: 20px;
+
+        main {
+            margin-top: 80px;
         }
-        
-        .program {
-            margin-bottom: 30px;
-            padding: 15px;
-            background-color: #ecf0f1;
-            border-left: 4px solid #3498db;
-        }
-        
-        .program h3 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        
-        footer {
-            background-color: #2c3e50;
+
+        .hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ecf0f1"/><circle cx="50" cy="50" r="20" fill="%2334495e" opacity="0.1"/></svg>');
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin: 2rem auto 3rem auto;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .motto {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #f39c12;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            margin: 1rem auto;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
+            transition: transform 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-card h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .program-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .program-card .program-details {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            border-left: 3px solid #3498db;
+        }
+
+        .program-details strong {
+            color: #34495e;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-style: italic;
+            margin: 2rem 0;
+        }
+
+        .testimonial p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial .author {
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .motto {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .section h3 {
+                font-size: 1.3rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Sentinel Circle</h1>
-        <p class="motto">Still Standing Watch</p>
+        <nav>
+            <div class="logo">⛨ Sentinel Circle</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="community.html">Community Partners</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </nav>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    
+
     <main>
-        <h2>Our Programs</h2>
-        
-        <div class="program">
-            <h3>Fireside Forums</h3>
-            <p>Storytelling gatherings where veterans and first responders share experiences, wisdom, and fellowship in a supportive environment.</p>
+        <section class="hero">
+            <h1>Our Programs</h1>
+            <p class="motto">Still Standing Watch</p>
+            <p>Discover the meaningful ways Sentinel Circle members continue to serve, grow in faith, and mentor the next generation through our structured programs and activities.</p>
+        </section>
+
+        <section class="section">
+            <h2>Program Overview</h2>
+            <p>At Sentinel Circle, our programs are designed to honor the experience and wisdom of Christian men aged 50 and older while providing meaningful opportunities for continued service, fellowship, and spiritual growth. Each program reflects our commitment to faith, tradition, and community impact.</p>
+            <p>Our programs operate throughout South Central Pennsylvania, bringing together veterans, first responders, craftsmen, and community leaders in service to others and glorification of God.</p>
+        </section>
+
+        <div class="programs-grid">
+            <div class="program-card">
+                <h4>🤝 Brotherhood Fellowship</h4>
+                <p>Regular gatherings that strengthen bonds between members through shared meals, devotional studies, and meaningful conversation rooted in Christian principles.</p>
+                <div class="program-details">
+                    <p><strong>Frequency:</strong> Bi-weekly meetings</p>
+                    <p><strong>Focus:</strong> Bible study, prayer, and fellowship</p>
+                    <p><strong>Location:</strong> Rotating host churches across counties</p>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <h4>🛠️ Skills & Service Workshops</h4>
+                <p>Hands-on workshops where experienced craftsmen, veterans, and professionals share their expertise while serving community needs through practical projects.</p>
+                <div class="program-details">
+                    <p><strong>Frequency:</strong> Monthly workshops</p>
+                    <p><strong>Focus:</strong> Home repairs, community projects, skill sharing</p>
+                    <p><strong>Beneficiaries:</strong> Elderly, widows, veterans in need</p>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <h4>👨‍🏫 Mentorship Initiative</h4>
+                <p>Structured mentoring program connecting our members with younger men, veterans transitioning to civilian life, and emerging community leaders.</p>
+                <div class="program-details">
+                    <p><strong>Duration:</strong> 6-12 month commitments</p>
+                    <p><strong>Focus:</strong> Career guidance, life skills, faith development</p>
+                    <p><strong>Partners:</strong> Local churches, veteran organizations</p>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <h4>🇺🇸 Veterans Support Network</h4>
+                <p>Specialized support for veteran members and their families, connecting them with resources, benefits assistance, and peer support networks.</p>
+                <div class="program-details">
+                    <p><strong>Services:</strong> Benefits navigation, peer counseling</p>
+                    <p><strong>Partnerships:</strong> VA, Veterans Outreach of PA</p>
+                    <p><strong>Meetings:</strong> Monthly support groups</p>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <h4>📚 Faith & Leadership Development</h4>
+                <p>Educational programs focused on deepening Christian faith, developing leadership skills, and preparing members for greater service roles in their communities.</p>
+                <div class="program-details">
+                    <p><strong>Format:</strong> Quarterly retreats and seminars</p>
+                    <p><strong>Topics:</strong> Biblical leadership, community engagement</p>
+                    <p><strong>Speakers:</strong> Pastors, community leaders, scholars</p>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <h4>🏘️ Community Outreach</h4>
+                <p>Organized service projects that address specific needs in our local communities, from food banks to disaster relief, demonstrating Christ's love through action.</p>
+                <div class="program-details">
+                    <p><strong>Projects:</strong> Food distribution, disaster response</p>
+                    <p><strong>Schedule:</strong> Ongoing as needs arise</p>
+                    <p><strong>Coordination:</strong> With local ministries and nonprofits</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="program">
-            <h3>Table Circle</h3>
-            <p>Shared meals at VFWs, American Legion halls, and churches, fostering community through the time-honored tradition of breaking bread together.</p>
+
+        <div class="testimonial">
+            <p>"Through Sentinel Circle's mentorship program, I've had the privilege of guiding three young veterans as they transition to civilian careers. It's given new purpose to my retirement years and strengthened my faith."</p>
+            <p class="author">— Robert K., Lancaster County Member & Army Veteran</p>
         </div>
-        
-        <div class="program">
-            <h3>The Iron Ledger</h3>
-            <p>Our digital quarterly publication featuring member essays, poems, and local history preservation for future generations.</p>
-        </div>
-        
-        <div class="program">
-            <h3>Sons of the Circle</h3>
-            <p>Mentorship program connecting experienced members with young men (ages 18-40) in homeschool and scouting networks.</p>
-        </div>
-        
-        <div class="program">
-            <h3>Field Watch</h3>
-            <p>Organized visits to elderly members, ensuring no one is forgotten and maintaining the bonds of brotherhood.</p>
-        </div>
+
+        <section class="section">
+            <h2>Program Participation</h2>
+            <h3>Getting Involved</h3>
+            <p>All Sentinel Circle members are encouraged to participate in programs that match their interests, skills, and availability. There are no additional fees for program participation beyond membership, and flexible scheduling accommodates various life circumstances.</p>
+            
+            <h3>Leadership Opportunities</h3>
+            <p>Experienced members are invited to take leadership roles within programs, drawing on their professional backgrounds and life experience to guide initiatives and mentor other participants.</p>
+            
+            <h3>Community Impact</h3>
+            <p>Our programs have directly served over 200 families annually across South Central Pennsylvania, from home repairs for elderly residents to mentoring dozens of young men. Each program reflects our motto of "Still Standing Watch" over our communities.</p>
+
+            <div class="cta-buttons">
+                <a href="join.html" class="btn">Join Our Programs</a>
+                <a href="contact.html" class="btn btn-secondary">Learn More</a>
+            </div>
+        </section>
     </main>
-    
+
     <footer>
-        <p>&copy; 2025 Sentinel Circle. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Sentinel Circle. A fellowship of Christian men committed to service, tradition, and strength.</p>
+            <p><em>"Still Standing Watch"</em></p>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
 </body>
 </html>
