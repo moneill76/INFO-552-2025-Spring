@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel Circle - Christian Men's Fellowship</title>
+    <title>Sentinel Circle - Still Standing Watch</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #2c3e50;
+            color: #333;
             background-color: #f8f9fa;
         }
-        
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         header {
             background-color: #34495e;
             color: white;
@@ -30,7 +36,7 @@
         }
         
         nav {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -61,129 +67,7 @@
         .nav-links a:hover {
             color: #3498db;
         }
-        
-        main {
-            margin-top: 80px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 2rem;
-        }
-        
-        .hero {
-            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ecf0f1"/><circle cx="50" cy="50" r="20" fill="%2334495e" opacity="0.1"/></svg>');
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
-            border-radius: 10px;
-            margin-bottom: 3rem;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card h2 {
-            color: #34495e;
-            margin-bottom: 1rem;
-        }
-        
-        .card p {
-            margin-bottom: 1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        
-        .community-links {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .community-links h2 {
-            color: #34495e;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-        
-        .link-item {
-            padding: 1rem;
-            border: 1px solid #bdc3c7;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .link-item:hover {
-            background-color: #ecf0f1;
-        }
-        
-        .link-item a {
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        .link-item p {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-top: 0.5rem;
-        }
-        
-        footer {
-            background-color: #34495e;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        
+
         .mobile-menu {
             display: none;
             background: white;
@@ -192,8 +76,215 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(52, 73, 94, 0.8), rgba(52, 73, 94, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ecf0f1"/><circle cx="50" cy="50" r="20" fill="%2334495e" opacity="0.1"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin: 2rem auto 3rem auto;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .motto {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #f39c12;
+            margin-bottom: 2rem;
+        }
+
+        .quote-section {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .quote-display {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .quote-display.fade-in {
+            opacity: 1;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #34495e;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .quote-author.fade-in {
+            opacity: 1;
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            margin: 1rem auto;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .community-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .community-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
+            transition: transform 0.3s;
+        }
+
+        .community-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .community-card h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .community-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .community-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .community-card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .motto {
+                font-size: 1.2rem;
+            }
+
+            .quote-display {
+                font-size: 1.1rem;
+            }
+            
             .nav-links {
                 display: none;
             }
@@ -202,12 +293,9 @@
                 display: block;
             }
             
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .content-grid {
-                grid-template-columns: 1fr;
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -219,10 +307,11 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="activities.html">Activities</a></li>
-                <li><a href="events.html">Events</a></li>
+                <li><a href="programs.html">Programs</a></li>
                 <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
                 <li><a href="community.html">Community Partners</a></li>
+                <li><a href="join.html">Join</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <button class="mobile-menu">☰</button>
@@ -232,90 +321,180 @@
     <main>
         <section class="hero">
             <h1>Sentinel Circle</h1>
+            <p class="motto">Still Standing Watch</p>
             <p>A fellowship of Christian men rooted in service, tradition, and strength. For veterans, first responders, craftsmen, and community leaders aged 50+ in South Central Pennsylvania.</p>
+            <div class="cta-buttons">
+                <a href="join.html" class="btn">Join Our Brotherhood</a>
+                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            </div>
         </section>
 
-        <div class="content-grid">
-            <div class="card">
-                <h2>Who We Are</h2>
-                <p>Sentinel Circle serves Christian men aged 50 and older in South Central Pennsylvania. We are retired veterans, first responders, craftsmen, and community leaders united by our faith and commitment to service.</p>
-                <p>Our brotherhood spans Lancaster, York, Cumberland, Dauphin, and surrounding counties, bringing together men from diverse backgrounds with shared values.</p>
-                <a href="about.html" class="btn">Learn More</a>
-            </div>
+        <section class="quote-section">
+            <div class="quote-display" id="quote-text"></div>
+            <div class="quote-author" id="quote-author"></div>
+        </section>
 
-            <div class="card">
-                <h2>Our Purpose</h2>
-                <p>We create a trusted space where Christian men can continue to find purpose, connection, and opportunities to mentor the next generation. Rooted in Trinitarian Christian faith, we embody service, tradition, biblical principles, and strength.</p>
-                <p>Through fellowship, service projects, and mentorship programs, we strengthen our community and faith.</p>
-                <a href="activities.html" class="btn">Our Activities</a>
-            </div>
+        <section class="section">
+            <h2>Who We Are</h2>
+            <p>Sentinel Circle serves Christian men aged 50 and older in South Central Pennsylvania. We are retired veterans, first responders, craftsmen, and community leaders united by our faith and commitment to service.</p>
+            <p>Our brotherhood spans Lancaster, York, Cumberland, Dauphin, and surrounding counties, bringing together men from diverse backgrounds with shared values of faith, service, tradition, and strength.</p>
+        </section>
 
-            <div class="card">
-                <h2>Join Our Brotherhood</h2>
-                <p>Are you a Christian man aged 50+ in South Central Pennsylvania? We invite you to join our brotherhood of veterans, first responders, craftsmen, and community leaders.</p>
-                <p>Regular meetings, service opportunities, and fellowship await. No dues, just commitment to faith and community.</p>
-                <a href="contact.html" class="btn">Get Involved</a>
+        <section class="section">
+            <h2>Our Purpose</h2>
+            <p>We create a trusted space where Christian men can continue to find purpose, connection, and opportunities to mentor the next generation. Rooted in Trinitarian Christian faith, we embody service, tradition, biblical principles, and strength.</p>
+            <p>Through fellowship, service projects, and mentorship programs, we strengthen our community and faith while honoring the motto that guides us: "Still Standing Watch."</p>
+            <div class="cta-buttons">
+                <a href="programs.html" class="btn">Our Programs</a>
+                <a href="activities.html" class="btn btn-secondary">Activities</a>
             </div>
-        </div>
+        </section>
 
-        <section class="community-links">
+        <section class="section">
             <h2>Community Connections</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://www.veteransoutreachofpa.org/" target="_blank">Veterans Outreach of PA</a>
+            <div class="community-links">
+                <div class="community-card">
+                    <h4>Veterans Outreach of PA</h4>
                     <p>Supporting homeless veterans with housing and services in Harrisburg area</p>
+                    <a href="https://www.veteransoutreachofpa.org/" target="_blank">Learn More</a>
                 </div>
-                
-                <div class="link-item">
-                    <a href="https://www.pa.gov/agencies/dmva/pennsylvania-veterans/events.html" target="_blank">PA Veterans Affairs Events</a>
+                <div class="community-card">
+                    <h4>PA Veterans Affairs Events</h4>
                     <p>Official state veterans events and resources</p>
+                    <a href="https://www.pa.gov/agencies/dmva/pennsylvania-veterans/events.html" target="_blank">View Events</a>
                 </div>
-                
-                <div class="link-item">
-                    <a href="https://lancasterpa.com/ministries/" target="_blank">Lancaster County Ministries</a>
+                <div class="community-card">
+                    <h4>Lancaster County Ministries</h4>
                     <p>Local faith-based organizations serving those in need</p>
+                    <a href="https://lancasterpa.com/ministries/" target="_blank">Explore Ministries</a>
                 </div>
-                
-                <div class="link-item">
-                    <a href="https://www.lancfound.org/" target="_blank">Lancaster County Community Foundation</a>
+                <div class="community-card">
+                    <h4>Lancaster County Community Foundation</h4>
                     <p>Building stronger communities through philanthropy</p>
+                    <a href="https://www.lancfound.org/" target="_blank">Get Involved</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Sentinel Circle. Serving Christian men 50+ in South Central Pennsylvania.</p>
-        <p>Faith • Service • Tradition • Strength</p>
+        <div class="container">
+            <p>&copy; 2024 Sentinel Circle. A fellowship of Christian men committed to service, tradition, and strength.</p>
+            <p><em>"Still Standing Watch"</em></p>
+        </div>
     </footer>
 
     <script>
-        // Simple mobile menu toggle (basic JavaScript for intro class level)
+        // Array of Catholic Scripture verses and historical quotes from strong men
+        const quotes = [
+            {
+                text: "Be strong and courageous! Do not be afraid or dismayed, for the Lord your God is with you wherever you go.",
+                author: "Joshua 1:9 (NAB)"
+            },
+            {
+                text: "The Lord is my strength and my shield; in him my heart trusts, and I am helped.",
+                author: "Psalm 28:7 (NAB)"
+            },
+            {
+                text: "He gives power to the weary and increases the strength of the weak.",
+                author: "Isaiah 40:29 (NAB)"
+            },
+            {
+                text: "I can do all things through Christ who strengthens me.",
+                author: "Philippians 4:13 (NAB)"
+            },
+            {
+                text: "Be watchful, stand firm in your faith, be courageous, be strong.",
+                author: "1 Corinthians 16:13 (NAB)"
+            },
+            {
+                text: "Put on the armor of God so that you may be able to stand firm against the tactics of the devil.",
+                author: "Ephesians 6:11 (NAB)"
+            },
+            {
+                text: "A man's heart plans his way, but the Lord directs his steps.",
+                author: "Proverbs 16:9 (NAB)"
+            },
+            {
+                text: "Courage is what it takes to stand up and speak; courage is also what it takes to sit down and listen.",
+                author: "Winston Churchill"
+            },
+            {
+                text: "Never give in, never give in, never, never, never—in nothing, great or small, large or petty.",
+                author: "Winston Churchill"
+            },
+            {
+                text: "Accept the challenges so that you can feel the exhilaration of victory.",
+                author: "General George S. Patton"
+            },
+            {
+                text: "I don't want to get any messages saying, 'I am holding my position.' We are not holding a goddamned thing. Let the Germans do that. We are advancing constantly.",
+                author: "General George S. Patton"
+            },
+            {
+                text: "It is better to offer no excuse than a bad one.",
+                author: "George Washington"
+            },
+            {
+                text: "Discipline is the soul of an army. It makes small numbers formidable; procures success to the weak, and esteem to all.",
+                author: "George Washington"
+            },
+            {
+                text: "Guard against the impostures of pretended patriotism.",
+                author: "George Washington"
+            },
+            {
+                text: "The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy.",
+                author: "Dr. Martin Luther King Jr."
+            },
+            {
+                text: "The way to get started is to quit talking and begin doing.",
+                author: "Walt Disney"
+            },
+            {
+                text: "A man who stands for nothing will fall for anything.",
+                author: "Malcolm X"
+            },
+            {
+                text: "The Lord is a warrior; Lord is his name!",
+                author: "Exodus 15:3 (NAB)"
+            }
+        ];
+
+        let currentQuoteIndex = 0;
+
+        function displayQuote() {
+            const quoteText = document.getElementById('quote-text');
+            const quoteAuthor = document.getElementById('quote-author');
+            
+            // Fade out
+            quoteText.classList.remove('fade-in');
+            quoteAuthor.classList.remove('fade-in');
+            
+            setTimeout(() => {
+                // Update content
+                quoteText.textContent = `"${quotes[currentQuoteIndex].text}"`;
+                quoteAuthor.textContent = `— ${quotes[currentQuoteIndex].author}`;
+                
+                // Fade in
+                quoteText.classList.add('fade-in');
+                quoteAuthor.classList.add('fade-in');
+                
+                // Move to next quote
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            }, 250);
+        }
+
+        // Initialize first quote
+        displayQuote();
+        
+        // Rotate quotes every 8 seconds
+        setInterval(displayQuote, 8000);
+
+        // Mobile menu functionality
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.backgroundColor = '#34495e';
-                navLinks.style.padding = '1rem';
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
